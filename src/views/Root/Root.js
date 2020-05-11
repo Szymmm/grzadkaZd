@@ -11,8 +11,29 @@ import Modal from '../../components/Modal/Modal';
 
 class Root extends React.Component {
   state = {
-      twitter: [],
-      article: [],
+      twitter: [          
+        {
+          image: 'https://sklep-nasiona.pl/images/detailed/45/010507.jpg',
+          title: 'Sałata Crimson - liściowa czerwona',
+          description: 'Jej liście cechują się delikatnością, soczystością i wyjątkowo dobrym smakiem. Sałata Crimson doskonale sprawdza się jako składnik sałatek lud dodatek do kanapek. Jej atrakcyjnie wybarwione liście mogą być również doskonałą dekoracją wielu dań. Sałata liściowa jest warzywem niskokalorycznym, bogatym w sole wapnia, magnezu i żelaza oraz karoten, witaminy z grupy B i witaminę C.',
+        },
+        {
+          image: 'https://sklep.swiatkwiatow.pl/images/detailed/60/salata-debolistna-dubacek.jpg',
+          title: 'Sałata Dubacek - dębolistna zielona',
+          description: 'Sałata Dubacek to odmiana sałaty liściowej zielonej, tak zwanej dębolistnej. Polecana przede wszystkim do sałatek, a także jako zielony dodatek do obiadu.',
+        },
+        {
+          image: 'https://a.allegroimg.com/s400/064484/81edd5944085b19c95c6cdbebaff/SALATA-DEBOLISTNA-REDIN-CZERWONA-przepyszna',
+          title: 'Sałata Redin - dębolistna czerwona',
+          description: 'Znakomita sałata liściowa Redin tworzy intensywnie wybarwione rozety kruchych, bardzo smacznych liści. Sałata dębolistna ze względu na charakterystyczne, dekoracyjne ukształtowanie swoich delikatnych, wyśmienitych liści cieszy się rosnącą popularnością na polskim rynku.',
+        }
+      ],
+      article: [ 
+        {
+          title: 'tytuł', 
+          description: 'opis',
+        }
+      ],
       note: [],
     isModalOpen: false,
   };
