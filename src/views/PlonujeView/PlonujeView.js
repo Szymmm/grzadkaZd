@@ -2,7 +2,7 @@ import React from 'react';
 import AppContext from '../../context';
 import List from '../../components/List/List';
 
-const ArticlesView = () => ( 
+const PlonujeView = () => ( 
   <AppContext.Consumer>
     {(context) => (
          <List items={context.article}/>
@@ -10,4 +10,4 @@ const ArticlesView = () => (
   </AppContext.Consumer>
 );
 
-export default ArticlesView;
+export default PlonujeView;

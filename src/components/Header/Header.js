@@ -23,7 +23,7 @@ render() {
     return (  
     <header className={styles.wrapper}>
     <NavLink activeClassName={styles.navItemLinkActive}
-      className={styles.navItemLink} to="/home">
+      className={styles.navItemLink} to="/">
       <img className={styles.logo} src={logoImage} alt="Zdalny Ogródek logo" />
     </NavLink >
     <HeaderNavigation />

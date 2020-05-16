@@ -8,12 +8,12 @@ const HeaderNavigation = () => (
       <li className={styles.navItem}>
       <NavLink exact
       activeClassName={styles.navItemLinkActive}
-      className={styles.navItemLink} to="/twitters">wysiano</NavLink>
+      className={styles.navItemLink} to="/wysiano">wysiano</NavLink>
       </li>
       <li className={styles.navItem}>
       <NavLink
       activeClassName={styles.navItemLinkActive}
-      className={styles.navItemLink} to="/articles">niedługo plonuje</NavLink>
+      className={styles.navItemLink} to="/plonuje">niedługo plonuje</NavLink>
       </li>
       <li className={styles.navItem}>
       <NavLink 

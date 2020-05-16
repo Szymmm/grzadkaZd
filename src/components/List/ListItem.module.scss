@@ -11,7 +11,7 @@
 
 .wrapper {
     list-style: none;
-    padding: 40px 300px 60px 200px;
+    padding: 40px 5% 60px 1%;
     display: flex;
     align-items: center;
     position: relative;
@@ -21,8 +21,8 @@
 .image {
     flex-shrink: 0;
     margin-right: 30px;
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
 }
 
@@ -45,5 +45,5 @@
     font-weight: 500;
     background: none;
     border: 2px solid #1E58FF;
-    color: #1E58FF;
+    color: darkgreen;
 }

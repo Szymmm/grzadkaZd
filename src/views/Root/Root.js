@@ -2,8 +2,8 @@ import React from "react";
 import "./index.css";
 import AppContext from '../../context';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import TwittersView from '../TwittersView/TwittersView';
-import ArticlesView from '../ArticlesView/ArticlesView';
+import WysianoView from '../WysianoView/WysianoView';
+import PlonujeView from '../PlonujeView/PlonujeView';
 import BoxView from '../BoxView/BoxView';
 import HomeView from '../HomeView/HomeView';
 import Header from '../../components/Header/Header';
@@ -112,11 +112,11 @@ class Root extends React.Component {
           <Header openModalFn={this.openModal} authenticated={this.state.authenticated} />
           <Switch>
             <Route exact path="/" component={HomeView} />
-            <PrivateRoute exact path="/twitters" component={TwittersView} />
+            <PrivateRoute exact path="/wysiano" component={WysianoView} />
             <AuthenticatedRoute exact path="/home" 
               authenticated={this.state.authenticated} 
               component={HomeView} />
-            <PrivateRoute path="/articles" component={ArticlesView} />
+            <PrivateRoute path="/plonuje" component={PlonujeView} />
             <Route path="/box" component={BoxView} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
