@@ -1,19 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Button from '../Button/Button';
 import HeaderNavigation from './HeaderNavigation';
 import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import logoImage from '../../assets/images/logo.PNG';
+import app from "../../base";
 
-const Header = ({ openModalFn }) => (
-  <header className={styles.wrapper}>
+class Header extends Component {
+  constructor(props) {
+    super(props)
+    this.closePopover = this.closePopover.bind(this)
+    this.state = {
+      popoverOpen: false
+    }
+  }
+
+  closePopover() {
+    this.setState({ popoverOpen: false })
+  }
+
+render() {
+    return (  
+    <header className={styles.wrapper}>
     <NavLink activeClassName={styles.navItemLinkActive}
       className={styles.navItemLink} to="/home">
       <img className={styles.logo} src={logoImage} alt="Zdalny Ogródek logo" />
     </NavLink >
     <HeaderNavigation />
-    <Button onClick={openModalFn} secondary>Zaloguj się</Button>
+    {
+          this.props.authenticated
+          ? (
+            <Button onClick={() => app.auth().signOut()}>Wyloguj</Button>          )
+            : (
+              <div className="pt-navbar-group pt-align-right">
+                <Button onClick={this.props.openModalFn}>Zaloguj się</Button>
+              </div>
+            )
+        }
   </header>
 );
+    }
+  }
 
 export default Header;

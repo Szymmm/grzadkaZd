@@ -3,11 +3,9 @@ import styles from "./Home.module.scss";
 import boxImage from '../../assets/images/home_skrzynka.jpg';
 import patchImage from '../../assets/images/home_grzadka.jpg';
 import otherImage from '../../assets/images/home_other.jpg';
-import app from "../../base";
 
 const HomeView = () => ( 
   <ol>
-    <button onClick={() => app.auth().signOut()}>Sign out</button>
     <h1 className={styles.headline}>Witaj na eGrządce</h1>
     <p className={styles.description_main}>eGrządka pomoże ci odnaleźć zdrowe i świeże produkty z wioski nieopodal ciebie</p>
     <p className={styles.description_main}>Tu skonfigurujesz dostawamy oraz podejrzysz co dzieje się w ogródku</p>

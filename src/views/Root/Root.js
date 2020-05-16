@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 import AppContext from '../../context';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import TwittersView from '../TwittersView/TwittersView';
 import ArticlesView from '../ArticlesView/ArticlesView';
 import BoxView from '../BoxView/BoxView';
@@ -12,6 +12,18 @@ import Login from '../Login';
 import SignUp from '../SignUp';
 import { AuthProvider } from "../../Auth";
 import PrivateRoute from "../../PrivateRoute";
+import app from '../../base';
+
+function AuthenticatedRoute({component: Component, authenticated, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => authenticated === true
+          ? <Component {...props} {...rest} />
+          : <Redirect to={{pathname: '/login', state: {from: props.location}}} /> } />
+  )
+}
+
 
 class Root extends React.Component {
   state = {
@@ -40,6 +52,7 @@ class Root extends React.Component {
       ],
       note: [],
     isModalOpen: false,
+    authenticated: false
   };
 
   addItem = (e, newItem) => {
@@ -63,6 +76,28 @@ class Root extends React.Component {
     })
   }
 
+  componentWillMount() {
+    this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          currentUser: user,
+          loading: false,
+        })
+      } else {
+        this.setState({
+          authenticated: false,
+          currentUser: null,
+          loading: false,
+        })
+      }
+    })
+  }
+
+  componentWillUnmount() {
+    this.removeAuthListener();
+  }
+
   render() {
     const { isModalOpen } = this.state;
     const contextElements = {
@@ -74,11 +109,13 @@ class Root extends React.Component {
       <AuthProvider>
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
-          <Header openModalFn={this.openModal} />
+          <Header openModalFn={this.openModal} authenticated={this.state.authenticated} />
           <Switch>
             <Route exact path="/" component={HomeView} />
             <PrivateRoute exact path="/twitters" component={TwittersView} />
-            <Route exact path="/home" component={HomeView} />
+            <AuthenticatedRoute exact path="/home" 
+              authenticated={this.state.authenticated} 
+              component={HomeView} />
             <PrivateRoute path="/articles" component={ArticlesView} />
             <Route path="/box" component={BoxView} />
             <Route exact path="/login" component={Login} />
