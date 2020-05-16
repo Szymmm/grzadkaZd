@@ -8,7 +8,7 @@ const HeaderNavigation = () => (
       <li className={styles.navItem}>
       <NavLink exact
       activeClassName={styles.navItemLinkActive}
-      className={styles.navItemLink} to="/">wysiano</NavLink>
+      className={styles.navItemLink} to="/twitters">wysiano</NavLink>
       </li>
       <li className={styles.navItem}>
       <NavLink
@@ -23,7 +23,7 @@ const HeaderNavigation = () => (
       <li className={styles.navItem}>
       <NavLink 
       activeClassName={styles.navItemLinkActive}
-      className={styles.navItemLink} to="/notes">twoja skrzynka</NavLink>
+      className={styles.navItemLink} to="/box">twoja skrzynka</NavLink>
       </li>
     </ul>
   </nav>

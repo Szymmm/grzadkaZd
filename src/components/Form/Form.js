@@ -8,24 +8,25 @@ import Radio from "./FormRadio";
 
 const types = {
   twitter: "twitter",
-  article: "article",
-  note: "note",
+  article: "article"
 };
 
 const descriptions = {
-  twitter: "favorite Twitter account",
-  article: "Article",
-  note: "Note",
+  twitter: "Logowanie",
+  article: "Rejestracja"
 };
 
 class Form extends React.Component {
   state = {
     type: types.twitter,
-    title: '',
-    link: '',
-    image: '',
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
     description: '',
   };
+
+ 
 
   handleRadioButtonChange = type => {
     this.setState({
@@ -38,10 +39,9 @@ class Form extends React.Component {
       [e.target.name]: e.target.value,
     });
     console.log(`
-    title: ${this.state.title},
-    link: ${this.state.link},
-    image: ${this.state.image},
-    description: ${this.state.description}
+    name: ${this.state.name},
+    surname: ${this.state.surname},
+    e-mail: ${this.state.email}
     `)
   };
 
@@ -64,46 +64,45 @@ class Form extends React.Component {
                 checked={type === types.twitter}
                 changeFn={() => this.handleRadioButtonChange(types.twitter)}
               >
-                Twitter
+                Logowanie
               </Radio>
               <Radio
                 id={types.article}
                 checked={type === types.article}
                 changeFn={() => this.handleRadioButtonChange(types.article)}
               >
-                Article
-              </Radio>
-              <Radio
-                id={types.note}
-                checked={type === types.note}
-                changeFn={() => this.handleRadioButtonChange(types.note)}
-              >
-                Note
+                Rejestracja
               </Radio>
             </div>
+
+            { type === types.article  ? 
             <Input 
               onChange={this.handleInputChange}
-              value={this.state.title}
-              name="title" 
-              label={type === types.twitter ? 'Twitter Name' : 'Title'} 
-              />
-            { type !== types.note  ? 
+              value={this.state.name}
+              name="name" 
+              label={'Imię'} 
+              /> : null }
+            { type === types.article  ? 
             <Input 
               onChange={this.handleInputChange}
-              value={this.state.link}
-              name="link" label={type === types.twitter ? 'Twitter link' : 'Link'}  /> : null }
-            { type === types.twitter ? 
+              value={this.state.surname}
+              name="surname" 
+              label={'Nazwisko'} 
+              /> : null }
             <Input 
               onChange={this.handleInputChange}
-              value={this.state.image}
-              name="image" label="Image" /> : null }
+              value={this.state.email}
+              name="email" 
+              label="e-mail"  />
             <Input 
               onChange={this.handleInputChange}
-              value={this.state.description}
-              tag="textarea" 
-              name="description" 
-              label="Description" />
-            <Button>add new item</Button>
+              value={this.state.password}
+              name="password" 
+              label="Hasło"  />
+            
+            <Button type="submit"> 
+              {type === types.article ? 'Zarejestruj się' : 'Zaloguj się'}
+            </Button>
           </form>
         </div>
         )}

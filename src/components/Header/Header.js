@@ -12,7 +12,7 @@ const Header = ({ openModalFn }) => (
       <img className={styles.logo} src={logoImage} alt="Zdalny Ogródek logo" />
     </NavLink >
     <HeaderNavigation />
-    <Button onClick={openModalFn} secondary>new item</Button>
+    <Button onClick={openModalFn} secondary>Zaloguj się</Button>
   </header>
 );
 

@@ -4,10 +4,14 @@ import AppContext from '../../context';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import TwittersView from '../TwittersView/TwittersView';
 import ArticlesView from '../ArticlesView/ArticlesView';
-import NotesView from '../NotesView/NotesView';
+import BoxView from '../BoxView/BoxView';
 import HomeView from '../HomeView/HomeView';
 import Header from '../../components/Header/Header';
 import Modal from '../../components/Modal/Modal';
+import Login from '../Login';
+import SignUp from '../SignUp';
+import { AuthProvider } from "../../Auth";
+import PrivateRoute from "../../PrivateRoute";
 
 class Root extends React.Component {
   state = {
@@ -67,18 +71,23 @@ class Root extends React.Component {
     }
     
     return (
+      <AuthProvider>
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
           <Switch>
-            <Route exact path="/" component={TwittersView} />
+            <Route exact path="/" component={HomeView} />
+            <PrivateRoute exact path="/twitters" component={TwittersView} />
             <Route exact path="/home" component={HomeView} />
-            <Route path="/articles" component={ArticlesView} />
-            <Route path="/notes" component={NotesView} />
+            <PrivateRoute path="/articles" component={ArticlesView} />
+            <Route path="/box" component={BoxView} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
           </Switch>
           { isModalOpen && <Modal closeModalFn={this.closeModal} /> }
         </AppContext.Provider>
       </BrowserRouter>
+      </AuthProvider>
     );
   }
 }
