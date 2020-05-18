@@ -6,6 +6,7 @@ import WysianoView from '../WysianoView/WysianoView';
 import PlonujeView from '../PlonujeView/PlonujeView';
 import BoxView from '../BoxView/BoxView';
 import HomeView from '../HomeView/HomeView';
+import VideoView from '../VideoView/VideoView';
 import Header from '../../components/Header/Header';
 import Modal from '../../components/Modal/Modal';
 import Login from '../Login';
@@ -117,7 +118,8 @@ class Root extends React.Component {
               authenticated={this.state.authenticated} 
               component={HomeView} />
             <PrivateRoute path="/plonuje" component={PlonujeView} />
-            <Route path="/box" component={BoxView} />
+            <PrivateRoute path="/box" component={BoxView} />
+            <Route path="/video" component={VideoView} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
           </Switch>

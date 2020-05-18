@@ -2,3 +2,5 @@ node_modules
 dist
 /yarn.lock
 /.env
+/.firebaserc
+/firebase-debug.log

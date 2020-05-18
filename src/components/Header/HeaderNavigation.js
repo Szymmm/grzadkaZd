@@ -23,6 +23,11 @@ const HeaderNavigation = () => (
       <li className={styles.navItem}>
       <NavLink 
       activeClassName={styles.navItemLinkActive}
+      className={styles.navItemLink} to="/video">video</NavLink>
+      </li>
+      <li className={styles.navItem}>
+      <NavLink 
+      activeClassName={styles.navItemLinkActive}
       className={styles.navItemLink} to="/box">twoja skrzynka</NavLink>
       </li>
     </ul>
